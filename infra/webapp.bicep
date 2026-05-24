@@ -20,18 +20,20 @@ resource appService 'Microsoft.Web/sites@2022-09-01' = {
   location: location
   properties: {
     serverFarmId: appServicePlan.id
-    siteConfig: {
-      linuxFxVersion: 'DOTNETCORE|8.0'
-      appSettings: [
-        {
-          name: 'ASPNETCORE_ENVIRONMENT'
-          value: 'Development'
-        }
-        {
-          name: 'UseOnlyInMemoryDatabase'
-          value: 'true'
-        }
-      ]
+  siteConfig: {
+  linuxFxVersion: 'DOTNETCORE|8.0'
+  appSettings: [
+    {
+      name: 'ASPNETCORE_ENVIRONMENT'
+      value: 'Development'
     }
-  }
+    {
+      name: 'UseOnlyInMemoryDatabase'
+      value: 'true'
+    }
+    {
+      name: 'SCM_DO_BUILD_DURING_DEPLOYMENT'
+      value: 'false'
+    }
+  ]
 }
